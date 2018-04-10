@@ -184,6 +184,7 @@ public class Prostor
      * @return Prostor, který se nachází za příslušným východem, nebo hodnota
      * null, pokud prostor zadaného jména není sousedem.
      */
+    
     public Prostor vratSousedniProstor (String nazevSouseda) 
     {
         List<Prostor>hledaneProstory = 

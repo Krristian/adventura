@@ -1,5 +1,6 @@
 package com.github.kristianzurav.adventura.logika;
 
+import java.util.Observable;
 
 /**
  *  Class HerniPlan - třída představující mapu a stav adventury.
@@ -12,7 +13,7 @@ package com.github.kristianzurav.adventura.logika;
  *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Kristian Žurav
  *@version    pro školní rok 2015/2016
  */
-public class HerniPlan 
+public class HerniPlan  extends Observable
 {
     
     private Prostor aktualniProstor;
@@ -115,6 +116,8 @@ public class HerniPlan
     public void setAktualniProstor (Prostor prostor) 
     {
        aktualniProstor = prostor;
+       this.setChanged();
+       this.notifyObservers();
     }
     
     /**
