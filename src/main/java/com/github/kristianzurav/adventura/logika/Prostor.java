@@ -1,7 +1,9 @@
 package com.github.kristianzurav.adventura.logika;
 
 import java.util.*;
-import java.util.stream.Collectors;
+//import java.util.stream.Collectors;
+
+
 
 /**
  * Trida Prostor - popisuje jednotlivé prostory (místnosti) hry
@@ -185,7 +187,7 @@ public class Prostor
      * null, pokud prostor zadaného jména není sousedem.
      */
     
-    public Prostor vratSousedniProstor (String nazevSouseda) 
+   /** public Prostor vratSousedniProstor (String nazevSouseda) 
     {
         List<Prostor>hledaneProstory = 
             vychody.stream ()
@@ -197,6 +199,19 @@ public class Prostor
         else {
             return hledaneProstory.get (0);
         }
+    }
+    */
+    public Prostor vratSousedniProstor(String nazevSouseda) 
+    {
+        if (nazevSouseda == null) {
+            return null;
+        }
+        for (Prostor sousedni : vychody) {
+            if (sousedni.getNazev().equals(nazevSouseda)) {
+                return sousedni;
+            }
+        }
+        return null;  // prostor nenalezen
     }
 
     /**
