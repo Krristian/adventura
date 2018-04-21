@@ -39,6 +39,11 @@ public class Vec
         return nazev;
     }
     
+    @Override
+    public String toString() {
+    	return getNazev();
+    }
+    
     /**
      * Metoda vrací přenositelnost věci.
      * @return pravda nebo nepravda, jestli je věc přenositelná

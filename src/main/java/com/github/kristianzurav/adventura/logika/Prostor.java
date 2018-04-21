@@ -25,6 +25,7 @@ public class Prostor
     private boolean jeUzamceno;
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
     private Map<String, Vec> veci;
+    private Set<Prostor> otevreneVychody; 
 
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
@@ -41,6 +42,7 @@ public class Prostor
         this.jeUzamceno = jeUzamceno;
         vychody = new HashSet<> ();
         veci = new HashMap<> ();
+        otevreneVychody = new HashSet<> ();
     }
 
     /**
@@ -225,7 +227,17 @@ public class Prostor
      */
     public Collection<Prostor> getVychody () 
     {
-        return Collections.unmodifiableCollection (vychody);
+        
+        for (Prostor sousedni : vychody) 
+        {
+            if ( ! sousedni.getUzamceni ()) otevreneVychody.add(sousedni);
+        }
+        return Collections.unmodifiableCollection (otevreneVychody);
+    }
+    
+    public Collection<Vec>  getVeci () 
+    {
+    	return Collections.unmodifiableCollection (veci.values());
     }
     
      /**
@@ -273,6 +285,11 @@ public class Prostor
     public boolean getUzamceni ()
     {
         return jeUzamceno;
+    }
+    
+    @Override
+    public String toString() {
+    	return getNazev();
     }
     
     
