@@ -26,6 +26,8 @@ public class Prostor
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
     private Map<String, Vec> veci;
     private Set<Prostor> otevreneVychody; 
+    private double souradniceX;
+    private double souradniceY;
 
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
@@ -42,6 +44,8 @@ public class Prostor
         this.jeUzamceno = jeUzamceno;
         vychody = new HashSet<> ();
         veci = new HashMap<> ();
+        souradniceX=-155;
+        souradniceY=-15;
     }
 
     /**
@@ -291,6 +295,21 @@ public class Prostor
     public String toString() {
     	return getNazev();
     }
+    
+    public void setSouradnice(double x, double y) {
+    	 souradniceX=x;
+    	 souradniceY=y;
+    }
+    
+    public double getX() {
+   	 	return souradniceX;
+   	 
+   }
+    public double getY() {
+      	 return souradniceY;
+      	 
+      }
+    
     
     
 }

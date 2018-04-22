@@ -48,7 +48,7 @@ public class PrikazJdi implements IPrikaz {
         Prostor sousedniProstor = plan.getAktualniProstor ().vratSousedniProstor (smer);
         
         if (sousedniProstor == null) {return "Tam se odsud jít nedá!";}
-        if (sousedniProstor.getUzamceni ()) {return "Tam teď jít nemůžeš, zkus nejdřív použít nějakou věc na dveře či překážku.";} 
+        if (sousedniProstor.getUzamceni ()) {return "Tam teď jít nemůžeš, \n zkus nejdřív použít nějakou věc na dveře či překážku.";} 
         if ((sousedniProstor.getNazev ().equals ("tajný_východ")) && (batoh.getVec ("relikvie") == null)) {return "Zatím nemůžeš odejít, potřebuješ najít a vzít relikvii.";}
                 else 
                 {

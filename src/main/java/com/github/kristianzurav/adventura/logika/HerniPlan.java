@@ -85,6 +85,7 @@ public class HerniPlan  extends Observable
         Vec relikvie = new Vec ("relikvie", true);
         Vec dvereKancelare = new Vec ("dveře_kanceláře",false);
         Vec police = new Vec ("police",false);
+        
         dul2.vlozVec (oceloveDvere);
         dul2.vlozVec (zaval);
         trezor.vlozVec (police);
@@ -95,6 +96,17 @@ public class HerniPlan  extends Observable
         kancelar.vlozVec (dvereTrezoru);     
         trezor.vlozVec (relikvie);
         hala.vlozVec (dvereKancelare);
+        
+        venku.setSouradnice(-155,-15);
+        dul1.setSouradnice(-93,-40);
+        dul2.setSouradnice (-30,-15);
+        zavalenaChodba.setSouradnice (-93,-95); 
+        hala.setSouradnice (33,14);
+        sklad.setSouradnice (92,40);
+        kancelar.setSouradnice (31,68);     
+        trezor.setSouradnice (-30,90);    
+        zasedacka.setSouradnice (93,-15);
+        tajnyVychod.setSouradnice (155,-40);
     }
     
     /**

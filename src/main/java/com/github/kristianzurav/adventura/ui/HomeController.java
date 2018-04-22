@@ -47,6 +47,7 @@ public class HomeController extends GridPane implements Observer {
 	@FXML private ImageView pacidlo;
 	@FXML private ImageView lopata;
 	@FXML private ImageView relikvie;
+	@FXML private ImageView figurka;
 	private IHra hra;
 	private Napoveda napoveda = new Napoveda ();
 	
@@ -114,6 +115,8 @@ public class HomeController extends GridPane implements Observer {
 		pacidlo.setVisible(false);
 		relikvie.setVisible(false);
 		lopata.setVisible(false);
+		figurka.setTranslateX(hra.getHerniPlan().getAktualniProstor().getX());
+		figurka.setTranslateY(hra.getHerniPlan().getAktualniProstor().getY());
 	}
 
 	@Override
@@ -126,6 +129,8 @@ public class HomeController extends GridPane implements Observer {
 		pacidlo.setVisible(hra.getBatoh().getVecUi("páčidlo"));
 		relikvie.setVisible(hra.getBatoh().getVecUi("relikvie"));
 		lopata.setVisible(hra.getBatoh().getVecUi("lopata"));
+		figurka.setTranslateX(hra.getHerniPlan().getAktualniProstor().getX());
+		figurka.setTranslateY(hra.getHerniPlan().getAktualniProstor().getY());
 		
 		
 	}
