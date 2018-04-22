@@ -109,7 +109,8 @@ public class Hra implements IHra
      *  
      *  @param  konecHry  hodnota true= konec hry, false = hra pokračuje
      */
-    void setKonecHry (boolean konecHry) 
+     
+     public void setKonecHry (boolean konecHry) 
     {
         this.konecHry = konecHry;
     }

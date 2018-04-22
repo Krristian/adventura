@@ -42,7 +42,6 @@ public class Prostor
         this.jeUzamceno = jeUzamceno;
         vychody = new HashSet<> ();
         veci = new HashMap<> ();
-        otevreneVychody = new HashSet<> ();
     }
 
     /**
@@ -227,6 +226,7 @@ public class Prostor
      */
     public Collection<Prostor> getVychody () 
     {
+    	otevreneVychody = new HashSet<> ();
         
         for (Prostor sousedni : vychody) 
         {

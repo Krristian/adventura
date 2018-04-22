@@ -46,7 +46,8 @@ public interface IHra
      *@return          vrací se řetězec, který se má vypsat na obrazovku
      */
      public String zpracujPrikaz(String radek);
-   
+     
+     public void setKonecHry (boolean konecHry); 
     
      /**
      *  Metoda vrátí odkaz na herní plán, je využita hlavně v testech,
