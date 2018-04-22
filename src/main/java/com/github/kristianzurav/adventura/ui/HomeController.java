@@ -1,6 +1,7 @@
 package com.github.kristianzurav.adventura.ui;
 
 import java.awt.Event;
+import java.awt.Image;
 import java.awt.Menu;
 import java.awt.MenuItem;
 import java.util.*;
@@ -10,6 +11,7 @@ import com.github.kristianzurav.adventura.logika.Prostor;
 import com.github.kristianzurav.adventura.logika.Vec;
 import com.github.kristianzurav.adventura.main.Start;
 import com.github.kristianzurav.adventura.logika.Hra;
+import com.github.kristianzurav.adventura.logika.Batoh;
 
 import javafx.fxml.FXML;
 import javafx.application.Application;
@@ -26,6 +28,8 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import java.util.Observable;
+import javafx.scene.image.ImageView;
+
 
 /**
  * Kontroler, který zprostředkovává komunikaci mezi grafikou
@@ -39,6 +43,10 @@ public class HomeController extends GridPane implements Observer {
 	@FXML private Button odesli;
 	@FXML private ListView<Prostor> seznamMistnosti;
 	@FXML private ListView<Vec> seznamVeci;
+	@FXML private ImageView klic;
+	@FXML private ImageView pacidlo;
+	@FXML private ImageView lopata;
+	@FXML private ImageView relikvie;
 	private IHra hra;
 	private Napoveda napoveda = new Napoveda ();
 	
@@ -56,6 +64,7 @@ public class HomeController extends GridPane implements Observer {
 		textVstup.setText("");
 		update(null,seznamMistnosti);
 		update(null,seznamVeci);
+	
 		
 		
 		
@@ -101,6 +110,10 @@ public class HomeController extends GridPane implements Observer {
 		hra.getHerniPlan().addObserver(this);
 		textVstup.setDisable(false);
 		odesli.setDisable(false);
+		klic.setVisible(false);
+		pacidlo.setVisible(false);
+		relikvie.setVisible(false);
+		lopata.setVisible(false);
 	}
 
 	@Override
@@ -109,6 +122,11 @@ public class HomeController extends GridPane implements Observer {
 		seznamVeci.getItems().clear();
 		seznamMistnosti.getItems().addAll(hra.getHerniPlan().getAktualniProstor().getVychody());
 		seznamVeci.getItems().addAll(hra.getHerniPlan().getAktualniProstor().getVeci());
+		klic.setVisible(hra.getBatoh().getVecUi("klíč"));
+		pacidlo.setVisible(hra.getBatoh().getVecUi("páčidlo"));
+		relikvie.setVisible(hra.getBatoh().getVecUi("relikvie"));
+		lopata.setVisible(hra.getBatoh().getVecUi("lopata"));
+		
 		
 	}
 	

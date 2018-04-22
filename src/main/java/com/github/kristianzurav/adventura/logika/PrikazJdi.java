@@ -59,7 +59,7 @@ public class PrikazJdi implements IPrikaz {
                         sousedniProstor.vratSousedniProstor ("první_část_dolu").setUzamceni (true); 
                         plan.setZavaleno ();
                         plan.setAktualniProstor (sousedniProstor);
-                        return "Tak tak jsi prošel a důl za tebou se zavalil. " + sousedniProstor.dlouhyPopis ();
+                        return "Tak tak jsi prošel a důl za tebou se zavalil. \n" + sousedniProstor.dlouhyPopis ();
                     } 
                     if (sousedniProstor.getNazev ().equals ("tajný_východ")) {return "Vyhrál jsi! Gratuluji.";}
                     return sousedniProstor.dlouhyPopis ();

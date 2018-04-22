@@ -163,6 +163,7 @@ public class HerniPlan  extends Observable
      */
      public boolean getProhledalKostru ()
     {
+    	 
         return prohledalKostru;
     }
     
@@ -176,6 +177,7 @@ public class HerniPlan  extends Observable
      public void setProhledalKostru ()
     {
         prohledalKostru = true;
+        
     }
     
     

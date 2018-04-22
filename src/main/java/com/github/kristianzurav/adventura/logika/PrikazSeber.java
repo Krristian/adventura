@@ -71,7 +71,7 @@ public class PrikazSeber implements IPrikaz
                 if ( ! batoh.pridejVec (sbirana)) // Pokud je batoh plný
                 {
                     aktualni.vlozVec (sbirana); 
-                    return "Tohle se ti už do batohu nevejde, nějakou věc musíš nejdříve odhodit.";
+                    return "Tohle se ti už do batohu nevejde, \n nějakou věc musíš nejdříve odhodit.";
                 }
                 return  "Sebráno " + nazevSbiraneho; // Pokud batoh není plný
             }

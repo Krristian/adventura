@@ -14,7 +14,7 @@ import java.util.*;
  * @author    Kristian Žurav
  * @version   1.00
  */
-public class Batoh
+public class Batoh extends Observable
 {
     //== Datové atributy (statické i instancí)======================================
     private Set<Vec> obsahBatohu; // Reprezentuje inventář hráče
@@ -36,7 +36,9 @@ public class Batoh
      */
     public boolean pridejVec (Vec vec)  
     {
-        if (obsahBatohu.size () < 3) {return obsahBatohu.add (vec);}
+    	
+        if (obsahBatohu.size () < 3) {this.setChanged();
+        this.notifyObservers(); return obsahBatohu.add (vec);}
         return false;
     }
     
@@ -65,7 +67,10 @@ public class Batoh
      */
      public boolean odeberVec (Vec vec)  
     {
+    	 this.setChanged();
+         this.notifyObservers();
         return obsahBatohu.remove (vec);
+        
     }
     
     /**
@@ -80,6 +85,15 @@ public class Batoh
             if (hledana.getNazev ().equals (nazev)) {return hledana;}
         }
         return null;
+    }
+    
+    public boolean getVecUi (String nazev) 
+    {
+        for (Vec hledana : obsahBatohu)
+        {
+            if (hledana.getNazev ().equals (nazev)) {return true;}
+        }
+        return false;
     }
     
     
