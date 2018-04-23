@@ -48,8 +48,13 @@ public class HomeController extends GridPane implements Observer {
 	@FXML private ImageView lopata;
 	@FXML private ImageView relikvie;
 	@FXML private ImageView figurka;
+	@FXML private ImageView figurka1;
+	@FXML private Button konecHryTlacitko;
 	private IHra hra;
 	private Napoveda napoveda = new Napoveda ();
+	//private Planek planek = new Planek ();
+	
+	
 	
 	
 	
@@ -66,9 +71,6 @@ public class HomeController extends GridPane implements Observer {
 		update(null,seznamMistnosti);
 		update(null,seznamVeci);
 	
-		
-		
-		
 		if(hra.konecHry()) {
 			textVypis.appendText("\n\n Konec hry \n");
 			textVstup.setDisable(true);
@@ -77,16 +79,23 @@ public class HomeController extends GridPane implements Observer {
 		}
 		
 	}
-		
+	
+	/**
+	 * Metoda ukončí hru, ale nevypne aplikaci
+	 */
 	public void konecHry() {
 			
 			hra.setKonecHry(true);
 			textVypis.appendText("\n\n Konec hry \n");
 			textVstup.setDisable(true);
 			odesli.setDisable(true);
+			konecHryTlacitko.setDisable(true);
 		
 	}
 	
+	/**
+	 * Metoda spustí hru od začátku
+	 */
 	public void novaHra() {
 		
 		IHra hra = new Hra();
@@ -94,6 +103,9 @@ public class HomeController extends GridPane implements Observer {
 	
 	}
 	
+	/**
+	 * Metoda zobrazí nápovědu v novém okně
+	 */
 	public void napoveda() throws Exception {
 		
 		Stage stage = new Stage();
@@ -101,6 +113,43 @@ public class HomeController extends GridPane implements Observer {
 	
 	}
 	
+	/**
+	 * Připravovaná metoda pro dialogové
+	 * zobrazení plánku s aktuální pozicí
+	 */
+   /** public void planek() throws Exception {
+  		
+  		Stage stage = new Stage();
+  		planek.start(stage);
+  		
+  	
+  	}*/
+    
+	/**
+	 * Metoda pro přechod do jiné místnosti
+	 * přes grafické rozhraní
+	 */
+    public void jdi() {
+    	Prostor prostor = seznamMistnosti.getSelectionModel().getSelectedItem();
+		if (prostor != null) {
+			String vypis = hra.zpracujPrikaz("jdi "+prostor.toString());
+			textVypis.appendText("\n--------\n"+"Jdi "+prostor.getNazev()+"\n--------\n");
+			textVypis.appendText(vypis);
+			update(null,seznamMistnosti);
+			update(null,seznamVeci);
+		}
+		else textVypis.appendText("\n--------\n Nemáš vybranou žádnou místnost! \n--------\n");
+
+	}
+	
+	
+	
+	
+	
+    /**
+	 * Metoda pro inicializaci uživatelského
+	 * rozhraní a samotného počátku hry
+	 */
 	public void inicializuj(IHra hra) {
 		this.hra = hra;
 		textVypis.setText(hra.vratUvitani());
@@ -108,6 +157,7 @@ public class HomeController extends GridPane implements Observer {
 		seznamVeci.getItems().clear();
 		seznamMistnosti.getItems().addAll(hra.getHerniPlan().getAktualniProstor().getVychody());
 		seznamVeci.getItems().addAll(hra.getHerniPlan().getAktualniProstor().getVeci());
+		hra.getHerniPlan().addObserver(this);
 		hra.getHerniPlan().addObserver(this);
 		textVstup.setDisable(false);
 		odesli.setDisable(false);
@@ -117,8 +167,15 @@ public class HomeController extends GridPane implements Observer {
 		lopata.setVisible(false);
 		figurka.setTranslateX(hra.getHerniPlan().getAktualniProstor().getX());
 		figurka.setTranslateY(hra.getHerniPlan().getAktualniProstor().getY());
+		konecHryTlacitko.setDisable(false);
+		
+		
 	}
 
+	/**
+	 * Metoda pro aktualizaci uživatelského 
+	 * rozhraní
+	 */
 	@Override
 	public void update(Observable o, Object arg) {
 		seznamMistnosti.getItems().clear();
@@ -131,8 +188,17 @@ public class HomeController extends GridPane implements Observer {
 		lopata.setVisible(hra.getBatoh().getVecUi("lopata"));
 		figurka.setTranslateX(hra.getHerniPlan().getAktualniProstor().getX());
 		figurka.setTranslateY(hra.getHerniPlan().getAktualniProstor().getY());
+
+		/** try {
+			planek();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		
-		
+		figurka1.setTranslateX(hra.getHerniPlan().getAktualniProstor().getX());
+		figurka1.setTranslateY(hra.getHerniPlan().getAktualniProstor().getY());
+		*/
 	}
 	
 	

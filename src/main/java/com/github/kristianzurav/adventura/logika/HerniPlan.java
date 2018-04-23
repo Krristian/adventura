@@ -2,6 +2,12 @@ package com.github.kristianzurav.adventura.logika;
 
 import java.util.Observable;
 
+import com.github.kristianzurav.adventura.ui.Planek;
+import com.github.kristianzurav.adventura.ui.HomeController;
+
+import javafx.stage.Stage;
+import javafx.application.Application;
+
 /**
  *  Class HerniPlan - třída představující mapu a stav adventury.
  * 
@@ -22,6 +28,8 @@ public class HerniPlan  extends Observable
     
     
     
+    
+    
      /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
      *  Jako výchozí aktuální prostor nastaví halu.
@@ -33,6 +41,8 @@ public class HerniPlan  extends Observable
     }
     /**
      *  Vytváří jednotlivé prostory a propojuje je pomocí východů.
+     *  Také vytváří jednotlivé věci a ukládá je do prostorů.
+     *  Dále každému prostoru přiřazuje souřadnice na plánku. 
      *  Jako výchozí aktuální prostor nastaví domeček.
      */
     private void zalozProstoryHry () 
@@ -121,7 +131,9 @@ public class HerniPlan  extends Observable
     }
     
     /**
-     *  Metoda nastaví aktuální prostor, používá se nejčastěji při přechodu mezi prostory
+     *  Metoda nastaví aktuální prostor
+     *  a upozorní observery o změně.
+     *  Používá se nejčastěji při přechodu mezi prostory
      *
      *@param  prostor nový aktuální prostor
      */
@@ -130,6 +142,9 @@ public class HerniPlan  extends Observable
        aktualniProstor = prostor;
        this.setChanged();
        this.notifyObservers();
+       
+       
+       
     }
     
     /**
@@ -191,6 +206,9 @@ public class HerniPlan  extends Observable
         prohledalKostru = true;
         
     }
+     
+   
     
+     
     
 }

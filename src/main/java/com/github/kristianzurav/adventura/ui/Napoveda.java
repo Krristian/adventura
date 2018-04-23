@@ -1,5 +1,7 @@
 package com.github.kristianzurav.adventura.ui;
 
+import com.github.kristianzurav.adventura.ui.HomeController;
+
 import java.io.File;
 import java.io.PrintWriter;
 import java.net.URL;

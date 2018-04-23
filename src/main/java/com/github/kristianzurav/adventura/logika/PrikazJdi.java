@@ -1,5 +1,7 @@
 package com.github.kristianzurav.adventura.logika;
 
+import java.util.Observable;
+
 /**
  *  Třída PrikazJdi implementuje pro hru příkaz jdi, kterým je možno procházet herním plánem.
  *  Tato třída je součástí jednoduché textové hry.
@@ -7,7 +9,7 @@ package com.github.kristianzurav.adventura.logika;
  *@author     Jarmila Pavlickova, Luboš Pavlíček, Kristian Žurav
  *@version    pro školní rok 2015/2016
  */
-public class PrikazJdi implements IPrikaz {
+public class PrikazJdi extends Observable implements IPrikaz  {
     private static final String NAZEV = "jdi";
     private HerniPlan plan;
     private Batoh batoh;

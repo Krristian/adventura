@@ -39,6 +39,13 @@ public class Vec
         return nazev;
     }
     
+    
+    /**
+     * Metoda pro získání názvu věci v podobě stringu
+     * Používá se zejména pro výpis věcí
+     * v listview v UI
+     * @return stringový zápis názvu věci
+     */
     @Override
     public String toString() {
     	return getNazev();

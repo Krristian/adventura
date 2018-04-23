@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="373.0" prefWidth="388.0" style="-fx-background-color: black;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9.0.1" fx:controller="com.github.kristianzurav.adventura.ui.HomeController">
+  <columnConstraints>
+    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="194.0" minHeight="10.0" prefHeight="32.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="380.0" minHeight="10.0" prefHeight="277.0" valignment="CENTER" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <ImageView fitHeight="277.0" fitWidth="388.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+         <image>
+            <Image url="@herniPlan.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="figurka1" fitHeight="30.0" fitWidth="30.0" opacity="0.6" pickOnBounds="true" preserveRatio="true" translateX="31.0" translateY="68.0" GridPane.rowIndex="1">
+         <image>
+            <Image url="@obrazky/figurka.png" />
+         </image>
+      </ImageView>
+   </children>
+</GridPane>

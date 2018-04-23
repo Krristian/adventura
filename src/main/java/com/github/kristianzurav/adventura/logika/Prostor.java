@@ -291,20 +291,40 @@ public class Prostor
         return jeUzamceno;
     }
     
+    /**
+     * Metoda pro získání názvu prostoru v podobě stringu
+     * Používá se zejména pro výpis prostorů
+     * v listview v UI
+     * @return stringový zápis názvu prostoru
+     */
     @Override
     public String toString() {
     	return getNazev();
     }
     
+    /**
+     * Metoda pro nastavení souřadnic daného prostoru na plánku
+     * 
+     */
     public void setSouradnice(double x, double y) {
     	 souradniceX=x;
     	 souradniceY=y;
     }
     
+    
+    /**
+     * Metoda pro zjištění souřadnice X daného prostoru
+     * @return pozici na ose X
+     */
     public double getX() {
    	 	return souradniceX;
    	 
    }
+    
+    /**
+     * Metoda pro zjištění souřadnice Y daného prostoru
+     * @return pozici na ose Y
+     */
     public double getY() {
       	 return souradniceY;
       	 
