@@ -136,6 +136,17 @@ public class Hra implements IHra
      {
          return batoh;
      }
+     
+     
+     /**
+      *  Metoda vrátí seznam platných příkazů ve hře
+      *  
+      *  @return     odkaz na seznam platných příkazů
+      */
+     public SeznamPrikazu getPlatnePrikazy ()
+     {
+         return platnePrikazy;
+     }
     
 }
 

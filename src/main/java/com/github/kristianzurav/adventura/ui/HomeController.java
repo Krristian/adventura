@@ -16,6 +16,7 @@ import com.github.kristianzurav.adventura.logika.Batoh;
 import javafx.fxml.FXML;
 import javafx.application.Application;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -28,6 +29,9 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import java.util.Observable;
+
+
+
 import javafx.scene.image.ImageView;
 
 
@@ -50,8 +54,11 @@ public class HomeController extends GridPane implements Observer {
 	@FXML private ImageView figurka;
 	@FXML private ImageView figurka1;
 	@FXML private Button konecHryTlacitko;
+	@FXML private ComboBox prikaz;
+
 	private IHra hra;
 	private Napoveda napoveda = new Napoveda ();
+	private boolean zobrazenaNapoveda = false;
 	//private Planek planek = new Planek ();
 	
 	
@@ -64,12 +71,14 @@ public class HomeController extends GridPane implements Observer {
 	 */
 	public void odesliPrikaz() {
 		
-		String vypis = hra.zpracujPrikaz(textVstup.getText());
-		textVypis.appendText("\n--------\n"+textVstup.getText()+"\n--------\n");
-		textVypis.appendText(vypis);
-		textVstup.setText("");
-		update(null,seznamMistnosti);
-		update(null,seznamVeci);
+		String prikazTyp = prikaz.getSelectionModel().getSelectedItem().toString();
+		
+			String vypis = hra.zpracujPrikaz(prikazTyp+" "+textVstup.getText());
+			textVypis.appendText("\n--------\n"+prikazTyp+" "+textVstup.getText()+"\n--------\n");
+			textVypis.appendText(vypis);
+			textVstup.setText("");
+			update(null,seznamMistnosti);
+			update(null,seznamVeci);
 	
 		if(hra.konecHry()) {
 			textVypis.appendText("\n\n Konec hry \n");
@@ -90,6 +99,8 @@ public class HomeController extends GridPane implements Observer {
 			textVstup.setDisable(true);
 			odesli.setDisable(true);
 			konecHryTlacitko.setDisable(true);
+			prikaz.setDisable(true);
+			
 		
 	}
 	
@@ -98,6 +109,7 @@ public class HomeController extends GridPane implements Observer {
 	 */
 	public void novaHra() {
 		
+		zobrazenaNapoveda = true;
 		IHra hra = new Hra();
 		inicializuj(hra) ;
 	
@@ -158,7 +170,6 @@ public class HomeController extends GridPane implements Observer {
 		seznamMistnosti.getItems().addAll(hra.getHerniPlan().getAktualniProstor().getVychody());
 		seznamVeci.getItems().addAll(hra.getHerniPlan().getAktualniProstor().getVeci());
 		hra.getHerniPlan().addObserver(this);
-		hra.getHerniPlan().addObserver(this);
 		textVstup.setDisable(false);
 		odesli.setDisable(false);
 		klic.setVisible(false);
@@ -168,6 +179,18 @@ public class HomeController extends GridPane implements Observer {
 		figurka.setTranslateX(hra.getHerniPlan().getAktualniProstor().getX());
 		figurka.setTranslateY(hra.getHerniPlan().getAktualniProstor().getY());
 		konecHryTlacitko.setDisable(false);
+		prikaz.setDisable(false);
+		prikaz.getItems().clear();
+		prikaz.getItems().addAll(hra.getPlatnePrikazy().getPrikazy());
+		prikaz.getSelectionModel().selectFirst();
+		if (! zobrazenaNapoveda ) {
+			try {
+				napoveda();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		
 		
 	}

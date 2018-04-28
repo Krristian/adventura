@@ -58,7 +58,14 @@ public interface IHra
      public HerniPlan getHerniPlan();
      
      public Batoh getBatoh();
-    
+     
+     /**
+      *  Metoda vrátí seznam platných příkazů ve hře
+      *  
+      *  @return     odkaz na seznam platných příkazů
+      */
+     public SeznamPrikazu getPlatnePrikazy ();
+     
     //== ZDĚDĚNÉ METODY ========================================================
     //== INTERNÍ DATOVÉ TYPY ===================================================
 }

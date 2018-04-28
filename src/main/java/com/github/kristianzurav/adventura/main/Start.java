@@ -62,14 +62,17 @@ public class Start extends Application
 
     	HomeController controller = loader.getController();
     	IHra hra = new Hra();
-		controller.inicializuj(hra);
+		
     	
     	primaryStage.setScene(new Scene(root));
     	primaryStage.show();
     	primaryStage.setTitle("Základní adventura");
-    	primaryStage.setOnCloseRequest(e -> {
+    	
+    	controller.inicializuj(hra);
+    	/**primaryStage.setOnCloseRequest(e -> {
     		e.consume();
     		primaryStage.close();
     	});
+    	*/
 	}
 }

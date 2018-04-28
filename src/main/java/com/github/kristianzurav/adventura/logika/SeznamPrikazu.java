@@ -1,7 +1,11 @@
 package com.github.kristianzurav.adventura.logika;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 /**
  *  Class SeznamPrikazu - eviduje seznam přípustných příkazů adventury.
@@ -18,6 +22,7 @@ import java.util.Map;
 public class SeznamPrikazu {
     // mapa pro uložení přípustných příkazů
     private  Map<String,IPrikaz> mapaSPrikazy;
+    private Map<String,IPrikaz> konecnePrikazy; 
     
    
     
@@ -78,5 +83,22 @@ public class SeznamPrikazu {
         return seznam;
     }
     
+    public Collection<String>  getPrikazy () 
+    {
+    	konecnePrikazy = new HashMap<> ();
+    	
+    	for (String prikazy : mapaSPrikazy.keySet()) 
+    	{
+    	    if (prikazy != "jdi"  && prikazy != "nápověda"  && prikazy != "konec" && prikazy != "inventář") konecnePrikazy.put(prikazy, mapaSPrikazy.get(prikazy));
+    	}
+    	
+    	
+    	return Collections.unmodifiableCollection (konecnePrikazy.keySet());
+    }
+    
 }
+
+
+
+
 
