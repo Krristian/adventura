@@ -52,7 +52,7 @@ public class HerniPlan  extends Observable
         Prostor dul1 = new Prostor ("první_část_dolu","první části dolu",false);
         Prostor dul2 = new Prostor ("druhá_část_dolu","druhé části dolu",false);
         Prostor zavalenaChodba = new Prostor ("zavalená_chodba","chodby dolu, která je zavalená",false);
-        Prostor hala = new Prostor ("hala","haly tajného bunkru. Ocelové dveře vedoucí do dolu \nse bohužel zaklaply a odsuď nejdou otevřít",true);
+        Prostor hala = new Prostor ("hala","haly tajného bunkru. Ocelové dveře vedoucí do \ndolu se bohužel zaklaply a odsuď nejdou otevřít",true);
         Prostor kancelar = new Prostor ("kancelář","kanceláře",true);
         Prostor sklad = new Prostor ("sklad","skladu",false);
         Prostor zasedacka = new Prostor ("zasedačka","zasedací místnosti",false);

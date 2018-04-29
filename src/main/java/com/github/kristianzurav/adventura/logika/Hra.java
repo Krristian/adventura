@@ -47,8 +47,7 @@ public class Hra implements IHra
     {
         return "Vítej!\n" +
                "Student Stanislav Novotný je na své cestě za získáním \ntří starobylých a tajuplných relikvií.\n" +
-               "Pomůžeš mu jednu z nich najít někde v srdci starého nacistického dolu?\n" +
-               "Napište 'nápověda', pokud si nevíte rady, jak hrát dál.\n" +
+               "Pomůžeš mu jednu z nich najít někde \nv srdci starého nacistického dolu?\n" +
                "\n" +
                herniPlan.getAktualniProstor().dlouhyPopis();
     }

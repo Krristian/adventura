@@ -121,7 +121,9 @@ public class HomeController extends GridPane implements Observer {
 	}
 	
 	/**
-	 * Metoda spustí hru od začátku
+	 * Metoda uloží hru do souboru
+	 * Uložení probíhá tak, že se do souboru zapíší
+	 * všechny zatím zadané příkazy
 	 */
 	public void ulozHru() {
 		
@@ -144,7 +146,10 @@ public class HomeController extends GridPane implements Observer {
 	}
 	
 	/**
-	 * Metoda spustí hru od začátku
+	 * Metoda načte poslední uloženou hru ze souboru
+	 * Načtení probíhá tak, že jsou postupně zadány 
+	 * všechny v souboru uložené příkazy
+	 * (a tyto příkazy se znovu ukládají do souboru)
 	 */
 	public void nahrajHru() {
 		
