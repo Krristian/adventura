@@ -1,9 +1,9 @@
 package com.github.kristianzurav.adventura.ui;
 
 import java.awt.Event;
-import java.awt.Image;
 import java.awt.Menu;
-import java.awt.MenuItem;
+
+import java.io.*;
 import java.util.*;
 
 import com.github.kristianzurav.adventura.logika.IHra;
@@ -20,6 +20,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.Scene;
@@ -28,10 +29,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import java.util.Observable;
-
-
-
 import javafx.scene.image.ImageView;
 
 
@@ -53,12 +50,14 @@ public class HomeController extends GridPane implements Observer {
 	@FXML private ImageView relikvie;
 	@FXML private ImageView figurka;
 	@FXML private ImageView figurka1;
-	@FXML private Button konecHryTlacitko;
+	@FXML private MenuItem konecHryTlacitko;
 	@FXML private ComboBox prikaz;
 
 	private IHra hra;
 	private Napoveda napoveda = new Napoveda ();
 	private boolean zobrazenaNapoveda = false;
+	private String [] provedenePrikazy; 
+	private int pocetPrikazu;
 	//private Planek planek = new Planek ();
 	
 	
@@ -75,6 +74,8 @@ public class HomeController extends GridPane implements Observer {
 		
 			String vypis = hra.zpracujPrikaz(prikazTyp+" "+textVstup.getText());
 			textVypis.appendText("\n--------\n"+prikazTyp+" "+textVstup.getText()+"\n--------\n");
+			provedenePrikazy[pocetPrikazu] = prikazTyp+" "+textVstup.getText();
+			pocetPrikazu++;
 			textVypis.appendText(vypis);
 			textVstup.setText("");
 			update(null,seznamMistnosti);
@@ -84,8 +85,12 @@ public class HomeController extends GridPane implements Observer {
 			textVypis.appendText("\n\n Konec hry \n");
 			textVstup.setDisable(true);
 			odesli.setDisable(true);
-			
+					
 		}
+		
+		
+		
+		
 		
 	}
 	
@@ -112,6 +117,66 @@ public class HomeController extends GridPane implements Observer {
 		zobrazenaNapoveda = true;
 		IHra hra = new Hra();
 		inicializuj(hra) ;
+	
+	}
+	
+	/**
+	 * Metoda spustí hru od začátku
+	 */
+	public void ulozHru() {
+		
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter("UlozenaHra.txt")))
+		{
+			
+			for (int i=0; i < pocetPrikazu; i++ )
+	        {
+				bw.write(provedenePrikazy[i]);
+		        bw.newLine();
+		        bw.flush();      
+	        }
+			
+		}		
+			catch (Exception e)
+			{
+				System.err.println("Do souboru se nepovedlo zapsat.");
+			}
+		           	
+	}
+	
+	/**
+	 * Metoda spustí hru od začátku
+	 */
+	public void nahrajHru() {
+		
+		zobrazenaNapoveda = true;
+		IHra hra = new Hra();
+		inicializuj(hra) ;
+		textVstup.setText("");
+		try (BufferedReader ctecka= new BufferedReader(new FileReader("UlozenaHra.txt")))
+        {
+            
+          
+            String radek = ctecka.readLine();
+            while (radek != null) {
+            	String vypis = hra.zpracujPrikaz(radek);
+    			textVypis.appendText("\n--------\n"+radek+"\n--------\n");
+    			provedenePrikazy[pocetPrikazu] = radek;
+    			pocetPrikazu++;
+    			textVypis.appendText(vypis);			
+    			update(null,seznamMistnosti);
+    			update(null,seznamVeci);
+                radek= ctecka.readLine();
+            }
+        }
+        catch (FileNotFoundException e)
+        {
+             System.out.println("Soubor nenalezen "+ e);
+        }
+        catch(IOException e)
+        {
+             System.out.println("Probém se vstupem "+ e);
+        }
+ 
 	
 	}
 	
@@ -150,7 +215,11 @@ public class HomeController extends GridPane implements Observer {
 			update(null,seznamMistnosti);
 			update(null,seznamVeci);
 		}
-		else textVypis.appendText("\n--------\n Nemáš vybranou žádnou místnost! \n--------\n");
+		else {textVypis.appendText("\n--------\n Nemáš vybranou žádnou místnost! \n--------\n");}
+		
+		provedenePrikazy[pocetPrikazu] = ("jdi "+prostor.toString());
+		pocetPrikazu++;
+	
 
 	}
 	
@@ -183,6 +252,8 @@ public class HomeController extends GridPane implements Observer {
 		prikaz.getItems().clear();
 		prikaz.getItems().addAll(hra.getPlatnePrikazy().getPrikazy());
 		prikaz.getSelectionModel().selectFirst();
+		provedenePrikazy = new String [200];
+		pocetPrikazu = 0;
 		if (! zobrazenaNapoveda ) {
 			try {
 				napoveda();

@@ -1,0 +1,13 @@
+jdi první_část_dolu
+jdi zavalená_chodba
+prohlédni kostra
+jdi první_část_dolu
+jdi druhá_část_dolu
+použij klíš addas
+použij klíč ocelové_dveře
+jdi hala
+jdi zasedačka
+jdi hala
+jdi sklad
+seber páčidlo
+jdi hala

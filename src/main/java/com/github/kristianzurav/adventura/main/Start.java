@@ -38,16 +38,11 @@ public class Start extends Application
                 TextoveRozhrani ui = new TextoveRozhrani(hra);
                 ui.hraj();
             } else {
-                System.out.println("Neplatný parametr");
+                System.out.println("Neplatný parametr");   
             }
-        }
+            System.exit(0);
+        }	
     	
-    	//		  TODO parametrické spuštění hry
-//        IHra hra = new Hra();
-//        TextoveRozhrani ui = new TextoveRozhrani(hra);
-//        ui.hraj();
-    	
-    	launch(args);
     }
     
     /**
