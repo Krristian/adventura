@@ -82,7 +82,7 @@ public class HraTest {
         assertEquals ("první_část_dolu", hra1.getHerniPlan().getAktualniProstor().getNazev());
         hra1.zpracujPrikaz ("jdi druhá_část_dolu");
         assertEquals(hra1.zpracujPrikaz ("seber ocelové_dveře"),"Tohle vzít nemůžeš.");
-        assertEquals(hra1.zpracujPrikaz ("jdi hala"),"Tam teď jít nemůžeš, zkus nejdřív použít nějakou věc na dveře či překážku.");
+        assertEquals(hra1.zpracujPrikaz ("jdi hala"),"Tam teď jít nemůžeš, \n zkus nejdřív použít nějakou věc na dveře či překážku.");
         hra1.zpracujPrikaz ("použij klíč ocelové_dveře");
         hra1.zpracujPrikaz ("jdi hala");
         assertEquals (false, hra1.konecHry());

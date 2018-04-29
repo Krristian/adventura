@@ -1,8 +1,10 @@
 package com.github.kristianzurav.adventura.uiText;
 
+
 import java.util.Scanner;
 import com.github.kristianzurav.adventura.logika.*;
 import java.io.*;
+
 /**
  *  Class TextoveRozhrani
  * 
