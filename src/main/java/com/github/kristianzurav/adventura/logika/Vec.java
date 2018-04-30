@@ -7,7 +7,7 @@ package com.github.kristianzurav.adventura.logika;
 /*******************************************************************************
  * Instance třídy Vec představují věci ve hře.
  * Věci mají zadaný název a možnost přenositelnosti.
- * Tato třída je součástí jednoduché textové hry.
+ * Tato třída je součástí jednoduché adventury.
  *
  * @author    Kristian Žurav
  * @version   1.00
@@ -53,7 +53,7 @@ public class Vec
     
     /**
      * Metoda vrací přenositelnost věci.
-     * @return pravda nebo nepravda, jestli je věc přenositelná
+     * @return true, když je věc přenositelná nebo false, když není přenositelná
      */
     public boolean getPrenositelnost () 
     {   

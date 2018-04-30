@@ -6,7 +6,7 @@ package com.github.kristianzurav.adventura.logika;
 
 /*******************************************************************************
  * Třída PrikazOdhod implementuje příkaz pro odhození věci z batohu/inventáře.
- *  Tato třída je součástí jednoduché textové hry.
+ *  Tato třída je součástí jednoduché adventury.
  *
  * @author    Kristian Žurav
  * @version   1.00

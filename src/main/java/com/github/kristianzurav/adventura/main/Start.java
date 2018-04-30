@@ -5,7 +5,7 @@ package com.github.kristianzurav.adventura.main;
 
 import com.github.kristianzurav.adventura.logika.*;
 import com.github.kristianzurav.adventura.ui.HomeController;
-import com.github.kristianzurav.adventura.ui.TextoveRozhrani;
+import com.github.kristianzurav.adventura.uiText.TextoveRozhrani;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -17,13 +17,16 @@ import javafx.stage.Stage;
  * Třída  Start je hlavní třídou projektu,
  * který představuje jednoduchou textovou adventuru určenou k dalším úpravám a rozšiřování
  *
- * @author    Jarmila Pavlíčková
- * @version   ZS 2015/2016
+ * @author    Jarmila Pavlíčková, Kristian Žurav
+ * @version   1.00
  */
 public class Start extends Application
 {
     /***************************************************************************
      * Metoda, prostřednictvím níž se spouští celá aplikace.
+     * Pokud parametr zadán není, tak se aplikace spustí v 
+     * grafickém rozhraní.
+     * Pokud je zadán parametr -text, tak se spustí v textové verzi
      *
      * @param args Parametry příkazového řádku
      */
@@ -48,6 +51,7 @@ public class Start extends Application
     /**
 	 * Metoda, ve které se konstruuje okno, kontroler a hra,
 	 * která se předává kontroleru
+	 * @param Stage Primární okno aplikace
 	 */
 	@Override
 	public void start(Stage primaryStage) throws Exception {
@@ -64,10 +68,5 @@ public class Start extends Application
     	primaryStage.setTitle("Základní adventura");
     	
     	controller.inicializuj(hra);
-    	/**primaryStage.setOnCloseRequest(e -> {
-    		e.consume();
-    		primaryStage.close();
-    	});
-    	*/
 	}
 }

@@ -2,10 +2,10 @@ package com.github.kristianzurav.adventura.logika;
 
 /**
  *  Třída PrikazKonec implementuje pro hru příkaz konec.
- *  Tato třída je součástí jednoduché textové hry.
+ *  Tato třída je součástí jednoduché adventury.
  *  
  *@author     Jarmila Pavlickova
- *@version    pro školní rok 2015/2016
+ *@version    1.00
  *  
  */
 

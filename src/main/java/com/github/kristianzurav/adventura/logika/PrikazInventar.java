@@ -6,7 +6,7 @@ package com.github.kristianzurav.adventura.logika;
 
 /*******************************************************************************
  * Třída PrikazInventar implementuje příkaz pro vypsání věcí z inventáře/batohu.
- * Tato třída je součástí jednoduché textové hry.
+ * Tato třída je součástí jednoduché adventury.
  *
  * @author    Kristian Žurav
  * @version   1.00

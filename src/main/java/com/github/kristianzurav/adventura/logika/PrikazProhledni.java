@@ -6,7 +6,7 @@ package com.github.kristianzurav.adventura.logika;
 
 /*******************************************************************************
  * Třída PrikazProhledni implementuje příkaz pro prohledání věci z prostoru.
- * Tato třída je součástí jednoduché textové hry.
+ * Tato třída je součástí jednoduché adventury.
  *
  * @author    Kristian Žurav
  * @version   1.00

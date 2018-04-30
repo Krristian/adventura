@@ -9,7 +9,7 @@ import java.util.*;
  * Instance třídy Batoh představuje inventář hráče, kam vkládá předměty, které přenáší.
  * Umožňuje věci vkládat do inventáře a také je z něj odebírat.
  * Taktéž umožňuje vrátit řetězec s názvy všech věcí v inventáři nebo vrátit kokrétní věc z inventáře podle zadaného názvu.
- * Tato třída je součástí jednoduché textové hry.
+ * Tato třída je součástí jednoduché adventury.
  * 
  * @author    Kristian Žurav
  * @version   1.00
@@ -30,7 +30,9 @@ public class Batoh extends Observable
 
     //== Nesoukromé metody (instancí i třídy) ======================================
     /**
-     *  Metoda přidává věci do batohu/inventáře, ale pouze pokud je jich již v inventáři méně, jak tři.
+     *  Metoda přidává věci do batohu/inventáře, ale pouze 
+     *  pokud je jich již v inventáři méně, jak tři.
+     *  Také notifikuje observer o změně (pokud proběhla)
      *  @param vec  věc, kterou chceme do batohu/inventáře přidat
      *  @return vrací hodnotu podle toho, jestli bylo přidání úspěšné   hodnota= true bylo úspěšné hodnota= false  nebylo úspěšné
      */
@@ -61,7 +63,8 @@ public class Batoh extends Observable
     }
     
     /**
-     * Metoda odebírá věci z batohu/inventáře.
+     * Metoda odebírá věci z batohu/inventáře 
+     * a notifikuje observer o změně
      * @param vec    věc, kterou cheme odebrat z inventáře
      * @return vrací hodnotu úspěšnosti operace     hodnota= true odebrání proběhlo v pořádku    hodnota= false odebrání se nepovedlo
      */
@@ -87,6 +90,11 @@ public class Batoh extends Observable
         return null;
     }
     
+    /**
+     * Metoda pro zjištění zda se daná věc nachází v batohu.
+     * @param nazev nazev název věci
+     * @return boolean vrací hodnotu true, když se věc v batohu nachází a false, když ne
+     */
     public boolean getVecUi (String nazev) 
     {
         for (Vec hledana : obsahBatohu)

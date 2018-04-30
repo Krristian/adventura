@@ -4,10 +4,10 @@ import java.util.Observable;
 
 /**
  *  Třída PrikazJdi implementuje pro hru příkaz jdi, kterým je možno procházet herním plánem.
- *  Tato třída je součástí jednoduché textové hry.
+ *  Tato třída je součástí jednoduché adventury.
  *  
- *@author     Jarmila Pavlickova, Luboš Pavlíček, Kristian Žurav
- *@version    pro školní rok 2015/2016
+ *@author     Kristian Žurav
+ *@version    1.00
  */
 public class PrikazJdi extends Observable implements IPrikaz  {
     private static final String NAZEV = "jdi";

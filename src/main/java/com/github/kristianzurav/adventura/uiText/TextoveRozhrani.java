@@ -14,15 +14,16 @@ import java.io.*;
  *  
  *  
  *
- *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
- *@version    pro školní rok 2015/2016
+ *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Kristian Žurav
+ *@version    1.00
  */
 
 public class TextoveRozhrani {
     private IHra hra;
 
     /**
-     *  Vytváří hru.
+     *  
+     *  Konstruktor, který vytváří hru.
      */
     public TextoveRozhrani(IHra hra) {
         this.hra = hra;
@@ -33,8 +34,9 @@ public class TextoveRozhrani {
      *  příkazu od hráče do konce hry (dokud metoda konecHry() z logiky nevrátí
      *  hodnotu true). Nakonec vypíše text epilogu.
      */
+    
     public void hraj() {
-        System.out.println(hra.vratUvitani());
+        System.out.println("Pokud si nevíš rady, zadej příkaz 'Nápověda'.\n" + hra.vratUvitani());
 
         // základní cyklus programu - opakovaně se čtou příkazy a poté
         // se provádějí do konce hry.
@@ -47,6 +49,15 @@ public class TextoveRozhrani {
         System.out.println(hra.vratEpilog());
     }
 
+    /**
+     *  Hlavní metoda hry pro hru ze souboru. 
+     *  Vypíše úvodní text a pak opakuje čtení ze souboru a zpracování
+     *  příkazů až do konce hry (dokud metoda konecHry() z logiky nevrátí
+     *  hodnotu true). Nakonec vypíše text epilogu.
+     *  
+     *  @param nazevSouboru Cesta k souboru, ze kterého budeme číst příkazy
+     */
+    
     public void hrajZeSouboru(String nazevSouboru) {
         try (BufferedReader ctecka= new BufferedReader(new FileReader(nazevSouboru)))
         {

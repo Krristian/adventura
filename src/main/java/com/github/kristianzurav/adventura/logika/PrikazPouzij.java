@@ -6,7 +6,7 @@ package com.github.kristianzurav.adventura.logika;
 
 /*******************************************************************************
  * Třída PrikazPouzij implementuje příkaz pro použití věci na jinou věc v aktuálním prostoru.
- * Tato třída je součástí jednoduché textové hry.
+ * Tato třída je součástí jednoduché adventury.
  *
  * @author    Kristian Žurav
  * @version   1.00

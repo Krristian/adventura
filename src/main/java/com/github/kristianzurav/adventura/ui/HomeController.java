@@ -35,6 +35,8 @@ import javafx.scene.image.ImageView;
 /**
  * Kontroler, který zprostředkovává komunikaci mezi grafikou
  * a logikou adventury
+ * @author    Filip Vencovský, Kristian Žurav
+ * @version   1.00
  * 
  */
 public class HomeController extends GridPane implements Observer {
@@ -66,8 +68,11 @@ public class HomeController extends GridPane implements Observer {
 	
 	/**
 	 * Metoda čte příkaz ze vstupního textového pole
-	 * a zpracuje ho...
+	 * a zpracuje ho.
+	 * Také zapisuje do pole použité příkazy a 
+	 * updatuje seznam místností a seznam věcí.
 	 */
+	
 	public void odesliPrikaz() {
 		
 		String prikazTyp = prikaz.getSelectionModel().getSelectedItem().toString();
@@ -95,7 +100,8 @@ public class HomeController extends GridPane implements Observer {
 	}
 	
 	/**
-	 * Metoda ukončí hru, ale nevypne aplikaci
+	 * Metoda ukončí hru, ale nevypne aplikaci.
+	 * Také zneaktivní nepotřebné prvky aplikace.
 	 */
 	public void konecHry() {
 			
@@ -110,7 +116,8 @@ public class HomeController extends GridPane implements Observer {
 	}
 	
 	/**
-	 * Metoda spustí hru od začátku
+	 * Metoda spustí hru od začátku a
+	 * zobrazí nápovědu.
 	 */
 	public void novaHra() {
 		
@@ -123,7 +130,7 @@ public class HomeController extends GridPane implements Observer {
 	/**
 	 * Metoda uloží hru do souboru
 	 * Uložení probíhá tak, že se do souboru zapíší
-	 * všechny zatím zadané příkazy
+	 * všechny zatím zadané příkazy z pole provedenePrikazy
 	 */
 	public void ulozHru() {
 		
@@ -149,7 +156,7 @@ public class HomeController extends GridPane implements Observer {
 	 * Metoda načte poslední uloženou hru ze souboru
 	 * Načtení probíhá tak, že jsou postupně zadány 
 	 * všechny v souboru uložené příkazy
-	 * (a tyto příkazy se znovu ukládají do souboru)
+	 * (a tyto příkazy se znovu ukládají do pole provedenePrikazy)
 	 */
 	public void nahrajHru() {
 		
@@ -207,9 +214,12 @@ public class HomeController extends GridPane implements Observer {
   	
   	}*/
     
+	
 	/**
 	 * Metoda pro přechod do jiné místnosti
-	 * přes grafické rozhraní
+	 * přes grafické rozhraní.
+	 * Také zapisuje do pole použité příkazy a 
+	 * updatuje seznam místností a seznam věcí.
 	 */
     public void jdi() {
     	Prostor prostor = seznamMistnosti.getSelectionModel().getSelectedItem();
@@ -234,7 +244,9 @@ public class HomeController extends GridPane implements Observer {
 	
     /**
 	 * Metoda pro inicializaci uživatelského
-	 * rozhraní a samotného počátku hry
+	 * rozhraní a samotného počátku hry.
+	 * Pokud se hra inicializuje poprvé, tak
+	 * zavolá metodu pro zobrazení nápovědy.
 	 */
 	public void inicializuj(IHra hra) {
 		this.hra = hra;

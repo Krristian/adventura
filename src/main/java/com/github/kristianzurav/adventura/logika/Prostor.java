@@ -8,14 +8,14 @@ import java.util.*;
 /**
  * Trida Prostor - popisuje jednotlivé prostory (místnosti) hry
  *
- * Tato třída je součástí jednoduché textové hry.
+ * Tato třída je součástí jednoduché a notifikuje observer o změně.
  *
  * "Prostor" reprezentuje jedno místo (místnost, prostor, ..) ve scénáři hry.
  * Prostor může mít sousední prostory připojené přes východy. Pro každý východ
  * si prostor ukládá odkaz na sousedící prostor.
  *
  * @author Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Kristian Žurav
- * @version pro školní rok 2015/2016 LS
+ * @version 1.00
  */
 public class Prostor 
 {
@@ -152,7 +152,7 @@ public class Prostor
 
     /**
      * Vrací textový řetězec, který popisuje sousední východy, například:
-     * "vychody: hala ".
+     * "Východy: hala ".
      *
      * @return Popis východů - názvů sousedních prostorů
      */
@@ -168,7 +168,7 @@ public class Prostor
     
     /**
      * Vrací textový řetězec, který jmenuje věci v aktuálním prostoru například:
-     * "veci: lopata ".
+     * "Věci: lopata ".
      *
      * @return názvy příotmných věcí
      */
@@ -186,6 +186,8 @@ public class Prostor
      * Vrací prostor, který sousedí s aktuálním prostorem a jehož název je zadán
      * jako parametr. Pokud prostor s udaným jménem nesousedí s aktuálním
      * prostorem, vrací se hodnota null.
+     * Metoda je zde pouze pro příklad jiné
+     * možné implementace. Tudíž je zakomentovaná.
      *
      * @param nazevSouseda Jméno sousedního prostoru (východu)
      * @return Prostor, který se nachází za příslušným východem, nebo hodnota
@@ -206,6 +208,16 @@ public class Prostor
         }
     }
     */
+    
+    /**
+     * Vrací prostor, který sousedí s aktuálním prostorem a jehož název je zadán
+     * jako parametr. Pokud prostor s udaným jménem nesousedí s aktuálním
+     * prostorem, vrací se hodnota null.
+     *
+     * @param nazevSouseda Jméno sousedního prostoru (východu)
+     * @return Prostor, který se nachází za příslušným východem, nebo hodnota
+     * null, pokud prostor zadaného jména není sousedem.
+     */
     public Prostor vratSousedniProstor(String nazevSouseda) 
     {
         if (nazevSouseda == null) {
@@ -220,9 +232,10 @@ public class Prostor
     }
 
     /**
-     * Vrací kolekci obsahující prostory, se kterými tento prostor sousedí.
+     * Vrací kolekci obsahující prostory, se kterými tento prostor sousedí
+     * a které jsou přístupné (neuzamčené).
      * Takto získaný seznam sousedních prostor nelze upravovat (přidávat,
-     * odebírat východy) protože z hlediska správného návrhu je to plně
+     * odebírat východy), protože z hlediska správného návrhu je to plně
      * záležitostí třídy Prostor.
      *
      * @return Nemodifikovatelná kolekce prostorů (východů), se kterými tento
@@ -239,6 +252,16 @@ public class Prostor
         return Collections.unmodifiableCollection (otevreneVychody);
     }
     
+    
+    /**
+     * Vrací kolekci obsahující věci, které se v prostoru nachází.
+     * Takto získaný seznam přítomných věcí nelze upravovat (přidávat,
+     * odebírat věci), protože z hlediska správného návrhu je to plně
+     * záležitostí třídy Prostor.
+     *
+     * @return Nemodifikovatelná kolekce věcí, 
+     * které se v prostoru nácházejí.
+     */
     public Collection<Vec>  getVeci () 
     {
     	return Collections.unmodifiableCollection (veci.values());
@@ -297,6 +320,7 @@ public class Prostor
      * v listview v UI
      * @return stringový zápis názvu prostoru
      */
+    
     @Override
     public String toString() {
     	return getNazev();
@@ -304,7 +328,8 @@ public class Prostor
     
     /**
      * Metoda pro nastavení souřadnic daného prostoru na plánku
-     * 
+     * @param x souřadnice x 
+     * @param y souřadnice y
      */
     public void setSouradnice(double x, double y) {
     	 souradniceX=x;
@@ -314,7 +339,7 @@ public class Prostor
     
     /**
      * Metoda pro zjištění souřadnice X daného prostoru
-     * @return pozici na ose X
+     * @return pozice na ose X
      */
     public double getX() {
    	 	return souradniceX;
@@ -323,7 +348,7 @@ public class Prostor
     
     /**
      * Metoda pro zjištění souřadnice Y daného prostoru
-     * @return pozici na ose Y
+     * @return pozice na ose Y
      */
     public double getY() {
       	 return souradniceY;

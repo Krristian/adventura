@@ -10,7 +10,7 @@ package com.github.kristianzurav.adventura.logika;
  *  Také vyhodnocuje jednotlivé příkazy zadané uživatelem.
  *
  *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Kristian Žurav
- *@version    pro školní rok 2015/2016
+ *@version    1.00
  */
 
 public class Hra implements IHra 
@@ -140,7 +140,7 @@ public class Hra implements IHra
      /**
       *  Metoda vrátí seznam platných příkazů ve hře
       *  
-      *  @return     odkaz na seznam platných příkazů
+      *  @return odkaz na seznam platných příkazů
       */
      public SeznamPrikazu getPlatnePrikazy ()
      {

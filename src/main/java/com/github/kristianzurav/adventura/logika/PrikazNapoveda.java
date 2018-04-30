@@ -2,10 +2,10 @@ package com.github.kristianzurav.adventura.logika;
 
 /**
  *  Třída PrikazNapoveda implementuje pro hru příkaz napoveda.
- *  Tato třída je součástí jednoduché textové hry.
+ *  Tato třída je součástí jednoduché adventury.
  *  
  *@author     Jarmila Pavlickova, Luboš Pavlíček, Kristian Žurav
- *@version    pro školní rok 2015/2016
+ *@version    1.00
  *  
  */
 class PrikazNapoveda implements IPrikaz {

@@ -17,7 +17,7 @@ import javafx.application.Application;
  *  a pamatuje si aktuální prostor, ve kterém se hráč právě nachází.
  *
  *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Kristian Žurav
- *@version    pro školní rok 2015/2016
+ *@version    1.00
  */
 public class HerniPlan  extends Observable
 {

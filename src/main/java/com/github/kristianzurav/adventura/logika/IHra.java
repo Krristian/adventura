@@ -9,8 +9,8 @@ package com.github.kristianzurav.adventura.logika;
 /**
  *  Rozhraní které musí implementovat hra, je na ně navázáno uživatelské rozhraní
  *
- *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
- *@version    pro školní rok 2015/2016
+ *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Kristian Žurav
+ *@version    1.00
  */
 public interface IHra
 {
@@ -47,6 +47,13 @@ public interface IHra
      */
      public String zpracujPrikaz(String radek);
      
+     
+     /**
+      *  Nastaví, že je konec hry, metodu využívá třída PrikazKonec,
+      *  mohou ji použít i další implementace rozhraní Prikaz.
+      *  
+      *  @param  konecHry  hodnota true= konec hry, false = hra pokračuje
+      */
      public void setKonecHry (boolean konecHry); 
     
      /**
@@ -57,6 +64,13 @@ public interface IHra
      */
      public HerniPlan getHerniPlan();
      
+     
+     /**
+      *  Metoda vrátí odkaz na batoh, je využita hlavně v testech,
+      *  kde se jejím prostřednictvím získává obsah batohu.
+      *  
+      *  @return     odkaz na batoh
+      */
      public Batoh getBatoh();
      
      /**

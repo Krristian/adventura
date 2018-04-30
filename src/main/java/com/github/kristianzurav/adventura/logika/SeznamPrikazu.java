@@ -14,10 +14,10 @@ import java.util.Set;
  *  Každý nový příkaz (instance implementující rozhraní Prikaz) se
  *  musí do seznamu přidat metodou vlozPrikaz.
  *
- *  Tato třída je součástí jednoduché textové hry.
+ *  Tato třída je součástí jednoduché adventury.
  *
- *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova
- *@version    pro školní rok 2015/2016
+ *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, Kristian Žurav
+ *@version    1.00
  */
 public class SeznamPrikazu {
     // mapa pro uložení přípustných příkazů
@@ -83,13 +83,28 @@ public class SeznamPrikazu {
         return seznam;
     }
     
+    
+    /**
+     *  Vrací seznam přípustných příkazů, 
+     *  které budou využity v comboboxu v grafickém UI.
+     *  Takto získaný seznam platných příkazů nelze nadále upravovat 
+     *  protože z hlediska správného návrhu je to plně
+     *  záležitostí třídy SeznamPrikazu.
+     *  
+     *  @return     Řetězec, který obsahuje seznam 
+     *  příkazů pro combobox v GUI
+     */
     public Collection<String>  getPrikazy () 
     {
     	konecnePrikazy = new HashMap<> ();
     	
     	for (String prikazy : mapaSPrikazy.keySet()) 
     	{
-    	    if (prikazy != "jdi"  && prikazy != "nápověda"  && prikazy != "konec" && prikazy != "inventář") konecnePrikazy.put(prikazy, mapaSPrikazy.get(prikazy));
+    	    if (prikazy != "jdi"  
+    	    		&& prikazy != "nápověda"  
+    	    		&& prikazy != "konec" 
+    	    		&& prikazy != "inventář") 
+    	    	konecnePrikazy.put(prikazy, mapaSPrikazy.get(prikazy));
     	}
     	
     	
